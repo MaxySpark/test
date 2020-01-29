@@ -1,0 +1,16 @@
+
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+
+->      /                        v1.admin.AdminRouter
+
+->      /v1/auth                com.arlabs.rapidplay.builtin.auth.Router
+->      /v1                     generated.Routes
+
+
+GET   /*file                 controllers.Assets.versioned(path="/public", file: Asset)
+GET   /<[.]+>                     controllers.Assets.at(path:String="/public", file: String = "index.html")
+GET   /                     controllers.Assets.at(path:String="/public", file: String = "index.html")

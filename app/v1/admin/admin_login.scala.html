@@ -1,0 +1,49 @@
+@import helper._
+
+@()
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+        <!-- when using the mode "code", it's important to specify charset utf-8 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/5.27.0/jsoneditor.min.css" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/5.27.0/jsoneditor.min.js"></script>
+    </head>
+    <body>
+    <form method="post" action="/login">
+        <textarea type="text" name="text">
+        </textarea>
+        <input type="submit" />
+    </form>
+    <div id="jsoneditor" style="height: 80%;
+    position: absolute;
+    width: 100%;"></div>
+
+    <script>
+      var container = document.getElementById('jsoneditor');
+      var options = {
+        mode: 'tree',
+        modes: ['code', 'form', 'text', 'tree', 'view'], // allowed modes
+        onError: function (err) {
+          alert(err.toString());
+        },
+        onModeChange: function (newMode, oldMode) {
+          console.log('Mode switched from', oldMode, 'to', newMode);
+        }
+      };
+      var json = {
+        "array": [1, 2, 3],
+        "boolean": true,
+        "null": null,
+        "number": 123,
+        "object": {"a": "b", "c": "d"},
+        "string": "Hello World"
+      };
+      var editor = new JSONEditor(container, options, json);
+    </script>
+
+
+
+    </body>
+    </html>

@@ -1,0 +1,261 @@
+
+            openapi: 3.0.0
+            info:
+              version: '1.0.0'
+              title: 'demomodel'
+              description: 'It is used to perform GET, POST, UPDATE and DELETE operations '
+            servers:
+               - url: http://IP/v1/
+                 description: API Server
+            paths:
+              /demomodel:
+                get:
+                   description: Obtain all the specified items from the database
+                   parameters:
+
+                    - name: filter
+                      in: query
+                      description: The name of projects to obtain from database. Refer Rapid Play query system documentation to learn more about how to write data filters.
+                      schema:
+                        example: ={where:{any_key_defined_for_model:key_value}}
+
+                    - name: aggregate
+                      in: query
+                      description: Grouping based on attributes
+                      schema:
+                        type: string
+
+                   responses:
+                    200:
+                      description: Successful
+                      content:
+                        application/json:
+                          schema:
+                              ref: '#/components/schemas/demomodel'
+                    500:
+                      description: Internal Server Error
+                    400:
+                      description: Bad request
+
+                post:
+                  description: Creates a new userlocation in the database
+                  requestBody:
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          ref: '#/components/schemas/demomodel'
+                  responses:
+                    200:
+                      description: Successful
+                    500:
+                      description: Internal Server Error
+                    400:
+                      description: Bad request Error
+
+              /demomodel/{id}:
+                get:
+                  description: Obtain specified item by their id
+                  parameters:
+                    - name: id
+                      in: path
+                      required: true
+                      schema:
+                        type: string
+
+                  responses:
+                    200:
+                      description: Successful
+                      content:
+                        application/json:
+                          schema:
+                              ref: '#/components/schemas/demomodel'
+                    400:
+                      description: Bad request
+
+                    500:
+                      description: Internal Server Error
+
+                put:
+                  description: update the specified item using the id
+                  requestBody:
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          ref: '#/components/schemas/demomodel'
+                  responses:
+                    200:
+                      description: OK
+                    400:
+                      description: Bad Request
+                    500:
+                      description: Internal Server Error
+
+                delete:
+                  description: Delete the specified item using the id
+                  parameters:
+                    - name: id
+                      in: path
+                      required: true
+                      schema:
+                        example: asd-3erd-tre
+
+                  responses:
+                    200:
+                      description: Successful
+                    400:
+                      description: Bad request
+                    500:
+                      description: Internal Server Error
+
+
+            components:
+              schemas:
+                demomodel:
+                  description: Array of userlocation information
+                  type: array
+                  items:
+                    ref: '#/components/demomodel'
+
+                demomodel:
+                  description: Model containing userlocation information
+                  type: object
+                  Properties: [location]
+                    token:
+                      example: ab5d-2a3cd-ef54r
+                    userId:
+                      example: 1560693252515
+
+
+                
+            openapi: 3.0.0
+            info:
+              version: '1.0.0'
+              title: 'user'
+              description: 'It is used to perform GET, POST, UPDATE and DELETE operations '
+            servers:
+               - url: http://IP/v1/
+                 description: API Server
+            paths:
+              /user:
+                get:
+                   description: Obtain all the specified items from the database
+                   parameters:
+
+                    - name: filter
+                      in: query
+                      description: The name of projects to obtain from database. Refer Rapid Play query system documentation to learn more about how to write data filters.
+                      schema:
+                        example: ={where:{any_key_defined_for_model:key_value}}
+
+                    - name: aggregate
+                      in: query
+                      description: Grouping based on attributes
+                      schema:
+                        type: string
+
+                   responses:
+                    200:
+                      description: Successful
+                      content:
+                        application/json:
+                          schema:
+                              ref: '#/components/schemas/user'
+                    500:
+                      description: Internal Server Error
+                    400:
+                      description: Bad request
+
+                post:
+                  description: Creates a new userlocation in the database
+                  requestBody:
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          ref: '#/components/schemas/user'
+                  responses:
+                    200:
+                      description: Successful
+                    500:
+                      description: Internal Server Error
+                    400:
+                      description: Bad request Error
+
+              /user/{id}:
+                get:
+                  description: Obtain specified item by their id
+                  parameters:
+                    - name: id
+                      in: path
+                      required: true
+                      schema:
+                        type: string
+
+                  responses:
+                    200:
+                      description: Successful
+                      content:
+                        application/json:
+                          schema:
+                              ref: '#/components/schemas/user'
+                    400:
+                      description: Bad request
+
+                    500:
+                      description: Internal Server Error
+
+                put:
+                  description: update the specified item using the id
+                  requestBody:
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          ref: '#/components/schemas/user'
+                  responses:
+                    200:
+                      description: OK
+                    400:
+                      description: Bad Request
+                    500:
+                      description: Internal Server Error
+
+                delete:
+                  description: Delete the specified item using the id
+                  parameters:
+                    - name: id
+                      in: path
+                      required: true
+                      schema:
+                        example: asd-3erd-tre
+
+                  responses:
+                    200:
+                      description: Successful
+                    400:
+                      description: Bad request
+                    500:
+                      description: Internal Server Error
+
+
+            components:
+              schemas:
+                user:
+                  description: Array of userlocation information
+                  type: array
+                  items:
+                    ref: '#/components/user'
+
+                user:
+                  description: Model containing userlocation information
+                  type: object
+                  Properties: [location]
+                    token:
+                      example: ab5d-2a3cd-ef54r
+                    userId:
+                      example: 1560693252515
+
+
+                

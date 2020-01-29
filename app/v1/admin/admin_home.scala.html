@@ -1,0 +1,108 @@
+@import helper._
+@(emailCount: Long, targetedInL24: Long)
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="http://www.takeouropinion.com/assets/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Emailer</title>
+</head>
+<body>
+
+    <!-- Header Area End  -->
+    <!-- Breadcumb Area -->
+    <section class="breadcumb-area breadcumb-bg bg1 section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <h3>Email Panel</h3>
+                    <h4>Total number of email ids available: @emailCount</h4>
+                    @if(emailCount > 0) {
+                        <h4>% of emails targeted in last 24 hours: @(100 * targetedInL24 / emailCount)</h4>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Breadcumb Area End-->
+        <!-- Contact area   -->
+    <section class="contact-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-section">
+                        <h3>Send Email(s)</h3>
+                        <div class="contact-form">
+                            <form action = "/email/send/" method="post">
+                                <div class="form-group">
+                                    <label for="email-content-text">Last pinged(no. of hours ago):</label>
+                                    <input class="form-control" type="number" placeholder="Last pinged(no. of hours ago)" value="" name="lastPinged" id="sendgrid-api-key" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email-content-text">Email Subject:</label>
+                                    <input class="form-control" placeholder="Email Subject" value="" name="title" id="email-subject">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email-content-text">Email Content:</label>
+                                    <textarea class="form-control" placeholder="Email content(Text)" value="" name="content" id="email-content-text"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email-content-html">Email Content:</label>
+                                    <textarea class="form-control" placeholder="Email content(HTML)" value="" name="contentHtml" id="email-content-html"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-danger my_btn btn-block" name="sendemail" value="Go" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="contact-section">
+                        <h3>Html Preview</h3>
+                        <div id="mail-preview">
+                        </div>
+                    </div>
+                    <div class="contact-section">
+                        <h3>Add Email(s)</h3>
+                        <div class="contact-form">
+                            <form action = "/email/add/" method="post">
+                                <div class="form-group">
+                                    <label for="emails">Label:</label>
+                                    <input class="form-control" placeholder="one email per line" value="" name="label" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="emails">Emails:</label>
+                                    <textarea class="form-control" placeholder="one email per line" value="" name="emails" id="emails"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-danger my_btn btn-block" name="sendemail" value="Go" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style type="text/css">
+        td,th{
+            padding:5px !important;
+            text-align:center !important;
+        }
+    </style>
+    <script src="http://www.takeouropinion.com/assets/js/bootstrap.min.js"></script>
+    <script>
+     $("#email-content-html").change(function() {
+        $("#mail-preview").html($(this).val());
+     });
+    </script>
+    </body>
+</html>

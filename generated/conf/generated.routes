@@ -1,0 +1,5 @@
+
+-> /demomodel com.maxyspark.something.application.demomodel.Router
+          
+-> /user com.maxyspark.something.application.user.Router
+          
